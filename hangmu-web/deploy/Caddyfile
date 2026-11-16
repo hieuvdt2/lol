@@ -1,0 +1,23 @@
+# Caddy v2: HTTPS tự động + proxy ngược tới server game (cả WebSocket /ws lẫn /api và file tĩnh).
+{$DOMAIN} {
+	encode zstd gzip
+
+	reverse_proxy hangmu:8787 {
+		# Ghi ĐÈ (không nối thêm) để client không giả được IP bằng cách tự gửi X-Forwarded-For.
+		# Server chỉ tin các header này khi đặt TRUST_PROXY=1.
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Forwarded-Host {host}
+
+		# Bỏ server khỏi vòng cân bằng khi nó đang tắt êm (/readyz trả 503).
+		health_uri /readyz
+		health_interval 10s
+	}
+
+	# Khuyến nghị: không để API quản trị lộ ra Internet. Bỏ ghi chú để chỉ cho phép một địa chỉ tin cậy.
+	# @admin path /admin/*
+	# handle @admin {
+	# 	@notmine not remote_ip 203.0.113.10
+	# 	respond @notmine 404
+	# 	reverse_proxy hangmu:8787 { header_up X-Forwarded-For {remote_host} }
+	# }
+}

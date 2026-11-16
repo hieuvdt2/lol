@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Hang Tê Đỏ (fan-made): lục giác đỏ + tia chớp trắng trên nền tối. Không phải logo của đội nào. -->
+  <rect width="64" height="64" rx="14" fill="#0d0d12"/>
+  <path d="M32 7 L53 19.5 L53 44.5 L32 57 L11 44.5 L11 19.5 Z" fill="#e2102c" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M36 13 L22 34 L31 34 L27 51 L44 28 L35 28 Z" fill="#ffffff"/>
+</svg>

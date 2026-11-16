@@ -1,0 +1,46 @@
+# Chạy: DOMAIN=hang.example.com SITE_URL=https://hang.example.com ADMIN_TOKEN=$(openssl rand -hex 24) docker compose up -d --build
+# Caddy tự xin và gia hạn chứng chỉ HTTPS cho DOMAIN (cần trỏ DNS về máy này và mở cổng 80/443).
+services:
+  hangmu:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:-}
+        BUILD_ID: ${BUILD_ID:-}
+    restart: unless-stopped
+    environment:
+      PORT: "8787"
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      CAPACITY: ${CAPACITY:-500}
+      BOTS: ${BOTS:-8}
+      # Đứng sau Caddy: tin X-Forwarded-For do Caddy ghi đè. KHÔNG bật nếu cổng 8787 mở thẳng ra Internet.
+      TRUST_PROXY: "1"
+      ALLOWED_ORIGINS: ${SITE_URL:-}
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-}
+    volumes:
+      - hangmu-data:/data
+    expose:
+      - "8787"
+    # SHUTDOWN_MS mặc định 10 giây; cho Docker chờ lâu hơn một chút trước khi SIGKILL.
+    stop_grace_period: 15s
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - hangmu
+    environment:
+      DOMAIN: ${DOMAIN:?hãy đặt DOMAIN, ví dụ hang.example.com}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  hangmu-data:
+  caddy-data:
+  caddy-config:

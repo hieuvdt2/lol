@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- SEO cơ bản cho trang Home -->
+    <title>Hang MU — Di tích lịch sử của fan MU | Vào hang cùng anh em</title>
+    <meta
+      name="description"
+      content="Hang MU là sân chơi 3D multiplayer do fan MU tự làm: vào hang, ra hang, gặp gỡ và giải trí cùng anh em fan Quỷ Đỏ theo thời gian thực. Dự án fan-made, không liên kết chính thức."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#c8102e" />
+    <!-- https://hangmu.online được thay bằng SITE_URL: Nginx sub_filter (prod), Vite plugin (dev) -->
+    <link rel="canonical" href="https://hangmu.online/" />
+
+    <!-- Favicon / icon (nguồn: branding/, render bằng branding/render.sh) -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Hang MU" />
+
+    <!-- Open Graph / chia sẻ mạng xã hội -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Hang MU" />
+    <meta property="og:url" content="https://hangmu.online/" />
+    <meta property="og:title" content="Hang MU — Di tích lịch sử của fan MU" />
+    <meta
+      property="og:description"
+      content="Sân chơi 3D multiplayer do fan MU tự làm: vào hang, ra hang cùng anh em fan Quỷ Đỏ."
+    />
+    <meta property="og:image" content="https://hangmu.online/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Cửa hang đá vôi với cây đinh ba vàng phát sáng và dòng chữ Hang MU"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hangmu.online/og-image.png" />
+    <meta name="twitter:title" content="Hang MU — Di tích lịch sử của fan MU" />
+    <meta
+      name="twitter:description"
+      content="Sân chơi 3D multiplayer do fan MU tự làm: vào hang, ra hang cùng anh em fan Quỷ Đỏ."
+    />
+    <!-- Cấu hình runtime (timeout API, ...) — sinh bởi Vite plugin (dev) hoặc Nginx (prod) -->
+    <script src="/env.js"></script>
+    <!-- Google Tag Manager: mã container lấy từ GTM_ID (/env.js) — rỗng (dev) thì không tải.
+         CHỈ tải khi người dùng đã đồng ý cookie phân tích (src/legal: localStorage hangmu.analytics = yes);
+         đồng ý lúc đang dùng → React gọi window.__hangmuLoadGtm() -->
+    <script>
+      window.__hangmuLoadGtm = function () {
+        var id = (window.__ENV__ && window.__ENV__.gtmId) || ''
+        if (!/^GTM-[A-Z0-9]+$/.test(id) || window.__hangmuGtmLoaded) return
+        window.__hangmuGtmLoaded = true
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+          window.dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        // Sự kiện khởi tạo container (trigger "All Pages" / "Initialization" của GTM)
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var s = document.createElement('script')
+        s.async = true
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=' + id
+        document.head.appendChild(s)
+      }
+      try {
+        if (localStorage.getItem('hangmu.analytics') === 'yes') window.__hangmuLoadGtm()
+      } catch (e) {
+        /* chặn lưu trữ → coi như chưa đồng ý */
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-q9fqu_zQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-xlIhkhFF.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"b53e8cb3307b4b958e37d42402056d4e","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

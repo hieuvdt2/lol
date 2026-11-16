@@ -1,0 +1,27 @@
+# Cài đặt: sudo cp deploy/hangmu.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now hangmu
+[Unit]
+Description=Hang MU game server
+After=network.target
+
+[Service]
+Type=simple
+User=hangmu
+Group=hangmu
+WorkingDirectory=/opt/hangmu
+EnvironmentFile=/etc/hangmu/hangmu.env
+ExecStart=/usr/bin/node server/hangmu-server.mjs
+Restart=always
+RestartSec=2
+# systemd gửi SIGTERM rồi chờ; server tắt êm tối đa SHUTDOWN_MS (10 giây) nên cho dư.
+KillSignal=SIGTERM
+TimeoutStopSec=15
+# Cứng hóa: chỉ ghi được vào thư mục dữ liệu.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/hangmu
+StateDirectory=hangmu
+
+[Install]
+WantedBy=multi-user.target

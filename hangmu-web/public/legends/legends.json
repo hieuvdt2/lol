@@ -1,0 +1,5 @@
+{
+  "_ghi_chú": "Khung 'huyền thoại' trên tường hang. Để trống 'legends' thì dùng chân dung cách điệu tự vẽ. Mỗi mục: name (tên hiện dưới khung), years (dòng phụ), src (ảnh trong public/, ví dụ /legends/ten-anh.jpg), credit (ghi công và giấy phép). Tối đa 10 mục. Chỉ dùng ảnh bạn có quyền sử dụng.",
+  "_vi_du": { "name": "Tên người", "years": "2004–2012", "src": "/legends/ten-anh.jpg", "credit": "Tác giả, giấy phép, liên kết nguồn" },
+  "legends": []
+}

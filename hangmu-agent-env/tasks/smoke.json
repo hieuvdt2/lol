@@ -1,0 +1,15 @@
+[
+  {
+    "id": "env",
+    "type": "deploy_env",
+    "env_id": "hangmu",
+    "sandbox_type": "local"
+  },
+  {
+    "id": "serve",
+    "type": "env_outcome_verifier",
+    "env_id": "hangmu",
+    "file_artifact_id": "check_hangmu",
+    "verifier_id": "serve"
+  }
+]

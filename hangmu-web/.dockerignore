@@ -1,0 +1,14 @@
+node_modules
+dist
+data
+.git
+.DS_Store
+*.log
+tests
+docs
+scripts
+deploy
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
